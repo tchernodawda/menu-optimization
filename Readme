@@ -89,10 +89,6 @@ Run all cells in order; the notebook walks through problem modelling, graph cons
 | Combinatorial optimisation | Real-world resource minimisation problem |
 | Graph visualisation | Matplotlib rendering of coloured compatibility graphs |
 
-## Contributors
-
-**Touba CISSE, Thierno Daouda LY & Yaye Fatou SARR**
-
 ## License
 
 See [LICENSE](LICENSE) for details.
