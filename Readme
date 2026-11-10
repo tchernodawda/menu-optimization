@@ -1,4 +1,4 @@
-# Menu Optimization using Graph Coloring — NetworkX
+# Menu Optimization using Graph Coloring
 
 <div align="center">
 
@@ -8,7 +8,7 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-**Applying graph coloring to find the minimum number of dishes required to satisfy all dietary requirements simultaneously — with no incompatible pairings.**
+**Applying graph coloring to find the minimum number of dishes required to satisfy all dietary requirements simultaneously, with no incompatible pairings.**
 
 </div>
 
@@ -16,9 +16,9 @@
 
 Hotels and high-traffic venues must accommodate a wide variety of dietary requirements: gluten-free, vegan, lactose-free, nut-free, egg-free, fish-free, red-meat-free, and more.
 
-The central question: **what is the minimum number of distinct dishes needed to cover all dietary regimes, given that some combinations are incompatible?**
+The central question: what is the minimum number of distinct dishes needed to cover all dietary regimes, given that some combinations are incompatible?
 
-This is a direct application of the **graph coloring problem** — a classic NP-hard combinatorial optimisation problem — where:
+This is a direct application of the **graph coloring problem**, a classic NP-hard combinatorial optimisation problem where:
 - Each **node** represents a dietary regime
 - Each **edge** connects two regimes that **cannot be served by the same dish** (incompatibility)
 - The **minimum number of colours** needed to colour the graph = the **minimum number of dishes** required
@@ -34,7 +34,7 @@ Sans gluten · Végétalien · Sans lactose · Sans fruits à coque
 Sans produits laitiers · Sans œufs · Sans poisson · Sans viande rouge
 ```
 
-Edges are added between regimes that are **mutually compatible** (can be served by the same dish). Incompatible pairs have no edge — meaning they require separate dishes.
+Edges are added between regimes that are **mutually compatible** (can be served by the same dish). Incompatible pairs have no edge, meaning they require separate dishes.
 
 ### Algorithm
 
@@ -52,18 +52,8 @@ Each colour = one dish category that satisfies a group of compatible regimes.
 ### Visualisation
 
 The graph is rendered with Matplotlib at two stages:
-1. **Before coloring** — plain graph showing regime nodes and compatibility edges
-2. **After coloring** — colour-coded graph where each colour group identifies regimes that a single dish can cover
-
-## Project Structure
-
-```
-optimization-with-networkx/
-├── menu_optimization_using_graphs.ipynb   # Full implementation + visualisations
-├── diapos.pdf                             # Project presentation slides
-├── LICENSE
-└── README.md
-```
+1. **Before coloring**: plain graph showing regime nodes and compatibility edges
+2. **After coloring**: colour-coded graph where each colour group identifies regimes that a single dish can cover
 
 ## Setup & Usage
 
@@ -74,10 +64,10 @@ optimization-with-networkx/
 pip install networkx matplotlib jupyter
 
 # Launch the notebook
-jupyter notebook menu_optimization_using_graphs.ipynb
+jupyter notebooks/notebook menu_optimization_using_graphs.ipynb
 ```
 
-Run all cells in order — the notebook walks through problem modelling, graph construction, coloring, and result interpretation.
+Run all cells in order; the notebook walks through problem modelling, graph construction, coloring, and result interpretation.
 
 ## Key Concepts Demonstrated
 
@@ -95,4 +85,4 @@ Run all cells in order — the notebook walks through problem modelling, graph c
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+See [LICENSE](LICENSE) for details.
