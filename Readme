@@ -1,3 +1,4 @@
+
 # Menu Optimization using Graph Coloring
 
 <div align="center">
@@ -19,9 +20,10 @@ Hotels and high-traffic venues must accommodate a wide variety of dietary requir
 The central question: what is the minimum number of distinct dishes needed to cover all dietary regimes, given that some combinations are incompatible?
 
 This is a direct application of the **graph coloring problem**, a classic NP-hard combinatorial optimisation problem where:
-- Each **node** represents a dietary regime
-- Each **edge** connects two regimes that **cannot be served by the same dish** (incompatibility)
-- The **minimum number of colours** needed to colour the graph = the **minimum number of dishes** required
+
+- Each **node** represents a dietary regime.
+- Each **edge** connects two regimes that **cannot be served by the same dish** (incompatibility).
+- The **minimum number of colours** needed to colour the graph = the **minimum number of dishes** required.
 
 ## Approach
 
@@ -29,42 +31,50 @@ This is a direct application of the **graph coloring problem**, a classic NP-har
 
 8 dietary regimes are modelled as nodes in an undirected graph:
 
-```
-Sans gluten · Végétalien · Sans lactose · Sans fruits à coque
-Sans produits laitiers · Sans œufs · Sans poisson · Sans viande rouge
-```
+- Sans gluten
+- Végétalien
+- Sans lactose
+- Sans fruits à coque
+- Sans produits laitiers
+- Sans œufs
+- Sans poisson
+- Sans viande rouge
 
-Edges are added between regimes that are **mutually compatible** (can be served by the same dish). Incompatible pairs have no edge, meaning they require separate dishes.
+Edges are added between regimes that are **mutually incompatible** (cannot be served by the same dish). Incompatible pairs are connected by an edge and therefore require different colours.
 
 ### Algorithm
 
-`nx.greedy_color()` from NetworkX applies a **greedy graph coloring algorithm** that assigns colours to nodes such that no two adjacent nodes share the same colour, while minimising the total number of colours used.
+`nx.greedy_color()` from NetworkX applies a **greedy graph coloring algorithm** that assigns colours to nodes such that no two adjacent nodes share the same colour.
 
 ```python
 # Core of the solution
 colors = nx.greedy_color(G)
 num_dishes = max(colors.values()) + 1
+
 print(f"Minimum number of dishes required: {num_dishes}")
 ```
 
-Each colour = one dish category that satisfies a group of compatible regimes.
+Each colour represents one dish category that satisfies a group of compatible dietary regimes.
+
+**Note:** The greedy coloring algorithm provides a valid coloring but does not guarantee the optimal minimum number of colours (chromatic number).
 
 ### Visualisation
 
 The graph is rendered with Matplotlib at two stages:
-1. **Before coloring**: plain graph showing regime nodes and compatibility edges
-2. **After coloring**: colour-coded graph where each colour group identifies regimes that a single dish can cover
+
+1. **Before coloring**: plain graph showing dietary regime nodes and incompatibility edges.
+2. **After coloring**: colour-coded graph where each colour group identifies regimes that can be covered by a single dish.
 
 ## Setup & Usage
 
-**Prerequisites:** Python 3.x, Jupyter
+**Prerequisites:** Python 3.x, Jupyter.
 
 ```bash
 # Install dependencies
 pip install networkx matplotlib jupyter
 
 # Launch the notebook
-jupyter notebooks/notebook menu_optimization_using_graphs.ipynb
+jupyter notebook "notebooks/notebook menu_optimization_using_graphs.ipynb"
 ```
 
 Run all cells in order; the notebook walks through problem modelling, graph construction, coloring, and result interpretation.
@@ -73,9 +83,9 @@ Run all cells in order; the notebook walks through problem modelling, graph cons
 
 | Concept | Application |
 |---|---|
-| Graph modelling | Dietary regimes as nodes, compatibility as edges |
+| Graph modelling | Dietary regimes as nodes, incompatibilities as edges |
 | Graph coloring problem | Minimum dish count = chromatic number |
-| Greedy coloring algorithm | `nx.greedy_color()` — polynomial-time approximation |
+| Greedy coloring algorithm | `nx.greedy_color()` — heuristic coloring algorithm |
 | Combinatorial optimisation | Real-world resource minimisation problem |
 | Graph visualisation | Matplotlib rendering of coloured compatibility graphs |
 
